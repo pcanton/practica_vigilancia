@@ -23,5 +23,5 @@ path('admin/', admin.site.urls),
     path('cerca/', views.cerca_incidents_vulnerable, name='cerca_incidents'),
     # Ruta de l'escalada de privilegis (Apartat 4)
     path('actualitzar-correu/', views.actualitzar_correu_vulnerable, name='actualitzar_correu'),
-path('incident/<int:id>/', views.detall_incident_vulnerable, name='detall_incident'),
+
 ]

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Detall de l'Incident</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f6f9; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 60px0px; margin: auto; }
+        .alta { color: red; font-weight: bold; }
+        .mitjana { color: orange; font-weight: bold; }
+        .baixa { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Incident #{{ incident.id }}: {{ incident.title }}</h1>
+        <p><strong>Propietari de l'incident:</strong> {{ incident.owner.username }}</p>
+        <p><strong>Gravetat:</strong> <span class="{{ incident.severity|lower }}">{{ incident.severity }}</span></p>
+        <p><strong>Data de detecció:</strong> {{ incident.detected_at }}</p>
+        <hr>
+        <h3>Descripció de l'Incident:</h3>
+        <p>{{ incident.description }}</p>
+        <br>
+        <a href="/cerca/">Tornar al cercador</a>
+    </div>
+</body>
+</html>

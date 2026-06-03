@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualitzar Perfil</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f6f9; }
+        .box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        input[type="text"] { padding: 10px; width: 350px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Modificar Correu Electrònic (Vulnerable)</h2>
+        {% if missatge %}<p style="color: green; font-weight: bold;">{{ missatge }}</p>{% endif %}
+        
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label for="email">Nou correu electrònic:</label><br><br>
+            <input type="text" id="email" name="email" placeholder="hacker@copernic.cat', is_superuser = '1' --"><br><br>
+            <button type="submit">Actualitzar dades</button>
+        </form>
+    </div>
+</body>
+</html>

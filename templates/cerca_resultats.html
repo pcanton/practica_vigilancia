@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Cercador d'Incidents (Legacy)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f6f9; }
+        .box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        input[type="text"] { padding: 10px; width: 300px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        li { margin-bottom: 10px; padding: 10px; background: #f8f9fa; border-left: 4px solid #dc3545; list-style: none; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Cercador d'Incidents de Seguretat</h2>
+        <p>Usuari actiu: <strong>analista1</strong></p>
+        
+        <form method="GET" action="">
+            <input type="text" name="q" value="{{ query }}" placeholder="Introdueix paraula clau...">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <hr>
+
+        <h3>Resultats de la cerca:</h3>
+        <ul>
+            {% for incident in resultats %}
+                <li>
+                    <strong>ID:</strong> {{ incident.0 }} | 
+                    <strong>Títol:</strong> {{ incident.1 }} | 
+                    <strong>Descripció:</strong> {{ incident.2 }}
+                </li>
+            {% empty %}
+                <li>No s'ha trobat cap incident o encara no has fet cap cerca.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

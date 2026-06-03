@@ -1,0 +1,34 @@
+name: Django DevSecOps Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Dowload repository code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install django
+        # Si utilitzes llibreries extra o requeriments, s'instal·len aquí
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Run Security Tests
+      env:
+        # Passem la clau secreta de Django com a variable d'entorn segura
+        SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+      run: |
+        python manage.py test core.tests_selenium

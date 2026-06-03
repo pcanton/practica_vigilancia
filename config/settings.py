@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
 ]
-
+	
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,7 +55,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+'DIRS': [BASE_DIR / 'templates'],  # <--- COMPRUEBA QUE ESTÉ ASÍ
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,12 +71,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
+# https://docs.djangoproject.com/en/6.0/ref/settings/#databas
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'incident_db',
+        'USER': 'postgres',
+        'PASSWORD': 'supersecret',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
